@@ -1,28 +1,28 @@
-// 类型别名：描述一个对象的类型
+/*接口interface和类型别名type都用于自定义数据类型。interface具有extends，扩展性好，一般用于定义对象的数据类型，以及类的属性
+
+*/ 
+// type自定义数据类型
 type dogType = {
     name: string,
     age: number
 };
-
 const Huskie: dogType = {
     name: "Huskie",
     age: 1
 }
 
-// 接口是对行为的抽象，具体如何行动需要由类去实现。接口除了可用于对类的一部分行为进行抽象意外，也常用于对对象的形状进行描述。
+// interface 定义对象的数据类型
 interface PersonObjInterface {
     name: string;
     age: number;
 }
-
+// 继承
 interface PersonObjInterface {
     gender: string;
     habit?: string
     readonly nationlity: string
-    // 索引签名：允许其他的任意属性。一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的子集
-    [propName: string]: any;
 }
-// 变量tom的类型是PersonInterface。因此，tom的形状必须和接口PersonInterface一致，多和少都不行。
+
 const tom: PersonObjInterface = {
     name: 'toni',
     age: 12,
@@ -30,7 +30,7 @@ const tom: PersonObjInterface = {
     nationlity: 'China'
 };
 
-
+// interface定义类的属性和方法
 interface PersonFunInterface {
     name: string;
     sayHello(): void;
@@ -71,14 +71,7 @@ apple({ name: 'safeness', size: 'big' } as FoodInterface)
 apple({ name: 'safeness', size: 'big' })
 
 
-/*接口和类型别名的区别
-大多数的情况下，使用接口类型和类型别名的效果等价。但是在某些特定的场景下这两者还是存在很大区别。
-TypeScript的核心原则之一是对值所具有的结构进行类型检查。而接口的作用就是为这些类型命名和为你的代码或第三方代码定义数据模型。
-
-
-type会给一个类型起个新名字。type有时和interface很像，但是可以作用于基本类型，联合类型，元组以及其它任何你需要手写的类型。
-
-*/
+//interface和type的区别
 /*区别一：objects/functions
 type不会新建一个类型，而是会给一个类型起一个新名字。然后用这个名字来引用类型。interface是创建一个新类型。
 */
@@ -91,8 +84,6 @@ interface VegetableInterfaceObj {
 interface VegetableInterfaceFun {
     (name: string, price: string): void
 }
-
-
 
 type VegetableTypeObj = {
     name: string
